@@ -26,3 +26,4 @@ python-dotenv
 #Machine Learning Utilities
 scikit-learn
 pyperclip
+langchain-community>=0.1.9
