@@ -1,6 +1,6 @@
-from langchain.chat_models import ChatOpenAI
-from langchain.prompts import PromptTemplate
-from langchain.schema import HumanMessage
+from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_core.prompts import PromptTemplate
+from langchain_core.messages import HumanMessage
 from dotenv import load_dotenv
 from langchain_core.output_parsers import StrOutputParser
 import os
@@ -13,10 +13,6 @@ from datetime import datetime
 import base64
 
 load_dotenv()
-
-API_KEY = os.getenv('OPENROUTER_API_KEY')
-os.environ['OPENAI_API_KEY'] = API_KEY
-os.environ['OPENAI_API_BASE'] = 'https://openrouter.ai/api/v1'
 
 # Configure page
 st.set_page_config(
@@ -385,8 +381,8 @@ def main():
     
     # Initialize model and parser
     parser = StrOutputParser()
-    model = ChatOpenAI(
-        model='cognitivecomputations/dolphin-mistral-24b-venice-edition:free',
+    model = ChatGoogleGenerativeAI(
+        model='gemini-2.5-flash',
         temperature=0
     )
 
